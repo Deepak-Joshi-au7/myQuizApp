@@ -11,7 +11,7 @@ import cors from "cors";
 
 //import Routes
 import admin from "./routes/admin";
-// import student from "./routes/students";
+import student from "./routes/students";
 
 const app = express();
 
@@ -42,7 +42,7 @@ app.use(cors());
 
 //routes
 app.use("/admin/", admin);
-// app.use("/students/", student);
+app.use("/students/", student);
 
 // Express
 app.use(express.json());

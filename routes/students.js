@@ -3,7 +3,7 @@ const router = express.Router();
 import Question from "../models/quizModel";
 
 // Get all the quiz questions
-router.get("/students", async (req, res) => {
+router.get("/answer", async (req, res) => {
   try {
     const question = await Question.find({});
     const { answer } = req.body;
