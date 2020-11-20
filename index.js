@@ -10,7 +10,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 //import Routes
-import admin from "./routes/admin";
+import admins from "./routes/admin";
+import students from "./routes/students";
 
 const app = express();
 
@@ -40,7 +41,8 @@ app.use(morgan("tiny"));
 app.use(cors());
 
 //routes
-app.use("/admin/", admin);
+app.use("/admin/", admins);
+app.use("/students/", students);
 
 // Express
 app.use(express.json());
