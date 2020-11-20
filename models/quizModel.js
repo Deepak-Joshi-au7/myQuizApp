@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const QuestionSchema = new mongoose.Schema({
-  question: String,
-  answers: [
+  description: String,
+  alternatives: [
     {
       text: {
         type: String,

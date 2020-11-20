@@ -10,8 +10,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 //import Routes
-import admins from "./routes/admin";
-import students from "./routes/students";
+import admin from "./routes/admin";
+// import student from "./routes/students";
 
 const app = express();
 
@@ -41,8 +41,8 @@ app.use(morgan("tiny"));
 app.use(cors());
 
 //routes
-app.use("/admin/", admins);
-app.use("/students/", students);
+app.use("/admin/", admin);
+// app.use("/students/", student);
 
 // Express
 app.use(express.json());
@@ -50,11 +50,10 @@ app.use(expressLayouts);
 app.use(express.static("public"));
 
 // Body-Parser
-app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
   res.send("this is the first page");
-  next();
 });
 
 const port = process.env.PORT || 8080;
