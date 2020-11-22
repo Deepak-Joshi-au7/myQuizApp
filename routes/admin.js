@@ -91,6 +91,7 @@ router.post("/category", async (req, res) => {
   }
 });
 
+//update by id
 router.put("/questions/:id", async (req, res) => {
   try {
     const _id = req.params.id;
@@ -114,6 +115,8 @@ router.put("/questions/:id", async (req, res) => {
     return res.status(500).json({ error });
   }
 });
+
+//delete by id
 router.delete("/questions/:id", async (req, res) => {
   try {
     const _id = req.params.id;
