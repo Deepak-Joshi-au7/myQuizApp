@@ -47,7 +47,7 @@ router.get("/category", async (req, res) => {
 router.get("/questions/:category", async (req, res) => {
   const category = req.params.category;
   const question = await Question;
-  if (!category || question) {
+  if (!category || !question) {
     return res.status(404).json();
   } else {
     return res.status(500).json();
@@ -61,6 +61,7 @@ router.post("/questions", async (req, res) => {
     const { alternatives } = req.body;
     const { category } = req.body;
     const categoryList = await CategoryList.find({});
+    res.send(categoryList);
     const question = await Question.create({
       description,
       alternatives,
@@ -69,7 +70,7 @@ router.post("/questions", async (req, res) => {
 
     await question.save();
 
-    return res.status(201).json(question);
+    return res.status(201).json(question, category);
   } catch (error) {
     return res.status(500).json({ error });
   }
