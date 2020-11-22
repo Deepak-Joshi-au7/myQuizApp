@@ -14,20 +14,21 @@ import admin from "./routes/admin";
 import student from "./routes/students";
 
 const app = express();
-
+const db = process.env.DATABASE_URL || "mongodb://localhost:27017/quiz";
+console.log(db);
 // Mongo Database
 try {
-  mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  mongoose.connect(
+    db,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    () => console.log("database is connected...")
+  );
 } catch (error) {
   console.log(error);
 }
-
-//Mongo Database Connection
-const db = mongoose.connection;
-db.on("connected", () => console.log("Connected to Mongoose Datebase.."));
 
 // View- Engines
 app.set("view engine", "ejs");

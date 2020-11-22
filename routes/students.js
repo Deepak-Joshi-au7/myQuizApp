@@ -4,19 +4,19 @@ import Question from "../models/quizModel";
 
 // Get all the quiz questions
 router.get("/answer", async (req, res) => {
-  try {
-    const question = await Question.find({});
-    const { answer } = req.body;
-
-    question.forEach((ques) => {
-      ques[text] === answer && ques[isCorrect] === true
-        ? res.send("correct answer")
-        : res.send("wrong answer");
+  const answer = req.body;
+  const check = false;
+  const result = 0;
+  const question = await Question.find({});
+  question.map((ques) => {
+    question[alternatives].forEach((ans) => {
+      ans.isCorrect === true && answer === true
+        ? (check = true)
+        : (check = false);
     });
-    return res.status(200).json(answer);
-  } catch (error) {
-    return res.status(500).json({ error });
-  }
+    check === true ? (result += 1) : (result = 0);
+  });
+  return res.send(result);
 });
 
 export default router;
