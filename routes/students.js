@@ -31,7 +31,7 @@ router.get("/answer/:category", async (req, res) => {
         ? (check = true)
         : (check = false);
     });
-    check === true ? (result += 1) : (result = 0);
+    check === true ? (result += 1) : (result = result);
   });
   return res.send(result);
 });
